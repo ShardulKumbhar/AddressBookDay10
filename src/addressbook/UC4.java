@@ -46,11 +46,24 @@ class Addressbook {
 			// display or print a array list
 			System.out.println("Contact Added");
 			System.out.println(contacts);
+
+			//userinput to remove contact by user name
+			System.out.println("Enter the first name of contact you want to remove :");
+			String fn1 = scanner.nextLine();
+
+			if (fn1.equals(firstn)) {
+				contacts.removeAll(contacts);
+				System.out.println(contacts);
+				System.out.println(contacts + "Empty Address Book");
+
+			} else {
+				System.out.println("NO contact exists by this name !!! Please try again");
+			}
 		}
 	}
 }
 
-public class UC2 {
+public class UC4 {
 
 	public static void main(String[] args) {
 		System.out.println("PhoneBook");
@@ -58,5 +71,6 @@ public class UC2 {
 		Addressbook person1 = new Addressbook();
 		// calling methord
 		person1.dataAdd();
+
 	}
 }
