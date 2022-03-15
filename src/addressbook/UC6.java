@@ -17,7 +17,7 @@ public class UC6 {
 			System.out.println(
 					"1: To add contact \n2: To edit existing contact \n3: To delete contact "
 					+ "\n4: To display contact list \n5: find contacts "
-					+ " \n6.AddMultipleAddressBook \n7.multiaddcontacts \n8:displayMultiAddress \n9: To Exit");
+					+ " \n6: Add Multiple Address Book \n7: Add Contact to multi Address Book \n8: display Multiple Address book \n9: To Exit");
 
 			int ch = sc.nextInt();
 

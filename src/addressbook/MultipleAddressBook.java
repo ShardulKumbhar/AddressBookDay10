@@ -6,11 +6,10 @@ import java.util.Scanner;
 
 public class MultipleAddressBook {
 
-	Map<String , AddServices> addressBookSystem =new HashMap<>();
+	Map<String, AddServices> addressBookSystem = new HashMap<>();
 	Scanner sc = new Scanner(System.in);
-	
-	public void AddMultipleAddressBook()
-	{
+
+	public void AddMultipleAddressBook() {
 		System.out.println("Enter the name of address book :");
 
 		String bookName = sc.next();
@@ -29,23 +28,22 @@ public class MultipleAddressBook {
 	public void addingContacts() {
 		System.out.println("Enter name of adress book you want to add contatcts in");
 		String existingBook = sc.next();
-		//System.out.println(existingBook);
+		// System.out.println(existingBook);
 		addressBookSystem.get(existingBook);
-		if(existingBook == null)
-		{
+		if (existingBook == null) {
 			System.out.println("Book Not Exist");
-		}
-		else {
+		} else {
 			addressBookSystem.get(existingBook).addPerson();
 		}
 
 	}
-	 public void printaddressBook() {
-		 for( String i : addressBookSystem.keySet()) {
-		 System.out.println(i);
-		 System.out.println(addressBookSystem.get(i).contacts);
-	 }
-	 
-	 }
+
+	public void printaddressBook() {
+		for (String i : addressBookSystem.keySet()) {
+			System.out.println(i);
+			System.out.println(addressBookSystem.get(i).contacts);
+		}
+
+	}
 
 }

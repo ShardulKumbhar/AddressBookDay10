@@ -7,19 +7,33 @@ public class AddServices {
 	ArrayList<AddContact> contacts = new ArrayList<AddContact>();
 	Scanner s = new Scanner(System.in);
 
+	
+	String name;
+
 	public void numberOfTimes() {
 		System.out.println("Enter the number of contacts to add");
 		int number = s.nextInt();
 		for (int i = 1; i <= number; i++) {
-
-			addPerson();
+	  System.out.println("Enter the contact details of person ");
+			duplicateCheck();
 		}
 	}
+	
+	public void duplicateCheck() {  
+		System.out.print(" Please enter the first name: ");
+		name = s.next();
+		for(AddContact i : contacts) {
+		   if(i.getFirstName().equals(name)) {
+			   System.out.println(" Given name already exists");
+		   } return;
+        }  addPerson();
+	}
+
 
 	public void addPerson() {
 
-		System.out.println("Enter the first name: ");
-		String firstName = s.next();
+		
+		String firstName = name;
 
 		System.out.println("Enter the last name: ");
 		String lastName = s.next();
@@ -149,11 +163,9 @@ public class AddServices {
 		contacts.remove(contact);
 		System.out.println("Updated Phone Book: \n" + contacts);
 	}
+
 	
-	public void stream() {
-		contacts.stream().sorted()
-		.forEach(null);
 		
-	}
+	
 
 }
