@@ -27,6 +27,9 @@ public class AddServices {
 		System.out.println("Enter the address: ");
 		String address = s.next();
 
+		System.out.println("Enter the email: ");
+		String email = s.next();
+
 		System.out.println("Enter the city: ");
 		String city = s.next();
 
@@ -38,9 +41,6 @@ public class AddServices {
 
 		System.out.println("Enter the phoneNo name");
 		Long phoneNo = s.nextLong();
-
-		System.out.println("Enter the email: ");
-		String email = s.next();
 
 		AddContact newContact = new AddContact(firstName, lastName, address, city, state, zipNo, phoneNo, email);
 		contacts.add(newContact);
@@ -64,6 +64,7 @@ public class AddServices {
 
 				duplicate++;
 				temp = contact;
+				System.out.println(contact);
 			}
 		}
 		if (duplicate == 1) {
@@ -147,6 +148,12 @@ public class AddServices {
 		AddContact contact = findContact();
 		contacts.remove(contact);
 		System.out.println("Updated Phone Book: \n" + contacts);
+	}
+	
+	public void stream() {
+		contacts.stream().sorted()
+		.forEach(null);
+		
 	}
 
 }
