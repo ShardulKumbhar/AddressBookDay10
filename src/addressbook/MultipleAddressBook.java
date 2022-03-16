@@ -28,8 +28,6 @@ public class MultipleAddressBook {
 		System.out.println("Enter the name of address book :");
 
 		String bookName = sc.next();
-
-		// addressBookSystem.put(bookName, service);
 		if (addressBookSystem.containsKey(bookName)) {
 			System.out.println("Book Already Exists");
 		} else {
@@ -46,7 +44,7 @@ public class MultipleAddressBook {
 	public void addingContacts() {
 		System.out.println("Enter name of adress book you want to add contatcts in");
 		String existingBook = sc.next();
-		// System.out.println(existingBook);
+		
 		addressBookSystem.get(existingBook);
 		if (existingBook == null) {
 			System.out.println("Book Not Exist");

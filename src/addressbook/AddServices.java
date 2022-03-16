@@ -6,22 +6,21 @@ import java.util.Scanner;
 public class AddServices {
 	/**
 	 * steps
-	 * ======================================================
+	 * ========================================================
 	 * 1.created one arraylist to store values
 	 * 2.created method to take number of input 
-	 * 3.Checking if there duplicate name already exicts
-	 * *4.taking input for person data
-	 * 5.Method to display
-	 * 6.Method to find and edit contact 
-	 * 7.Metthod to edit person data
-	 * =======================================================
+	 * 5.taking input for person data
+	 * 6.Method to display
+	 * 7.Method to find and edit contact 
+	 * 8.Metthod to edit person data
+	 * =========================================================
 	 */
 	/*
 	 * 1.created one arraylist to store values
 	 */
 	ArrayList<AddContact> contacts = new ArrayList<AddContact>();
 	Scanner s = new Scanner(System.in);
-    String name;
+  
 
     /*
      * 2.created method to take number of input 
@@ -30,32 +29,22 @@ public class AddServices {
 		System.out.println("Enter the number of contacts to add");
 		int number = s.nextInt();
 		for (int i = 1; i <= number; i++) {
-	  System.out.println("Enter the contact details of person ");
-			duplicateCheck();
+
+			addPerson();
 		}
 	}
 	
-	/*
-	 * 3.Checking if there duplicate name already exicts
-	 */
-	public void duplicateCheck() {  
-		System.out.print(" Please enter the first name: ");
-		name = s.next();
-		for(AddContact i : contacts) {
-		   if(i.getFirstName().equals(name)) {
-			   System.out.println(" Given name already exists");
-		   } return;
-        }  addPerson();
-	}
-
+	
 
 	/*
-	 *4.taking input for person data
+	 *3.taking input for person data
 	 */
 	public void addPerson() {
 
-		
-		String firstName = name;
+		 
+
+		System.out.println("Enter the first name: ");
+		String firstName = s.next();
 
 		System.out.println("Enter the last name: ");
 		String lastName = s.next();
@@ -84,7 +73,7 @@ public class AddServices {
 	}
 
 	/*
-	 * 5.Method to display
+	 * 4..Method to display
 	 */
 	public void display() {
 
@@ -92,7 +81,7 @@ public class AddServices {
 	}
 
 	/*
-	 * 6.Method to find and edit contact 
+	 * 5.Method to find and edit contact 
 	 */
 	public AddContact findContact() { // to find the contacts
 		System.out.println("\n Enter the first name of the contact to edit: ");
@@ -128,7 +117,7 @@ public class AddServices {
 	}
 
 	/*
-	 * 7.Metthod to edit person data
+	 * 6..Metthod to edit person data
 	 */
 	public void edit() {
 		AddContact contact = findContact();
@@ -190,16 +179,13 @@ public class AddServices {
 	}
 
 	/*
-	 * Method to delete person contacts
+	 *7. Method to delete person contacts
 	 */
 	public void delete() {
 		AddContact contact = findContact();
 		contacts.remove(contact);
 		System.out.println("Updated Phone Book: \n" + contacts);
-	}
-
-	
-		
+	}	
 	
 
 }
