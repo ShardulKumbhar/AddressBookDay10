@@ -2,7 +2,7 @@ package addressbook;
 
 import java.util.Scanner;
 
-public class UC6 {
+public class Main {
 
 	public static void main(String[] args) {
 
@@ -17,7 +17,8 @@ public class UC6 {
 			System.out.println(
 					"1: To add contact \n2: To edit existing contact \n3: To delete contact "
 					+ "\n4: To display contact list \n5: find contacts "
-					+ " \n6: Add Multiple Address Book \n7: Add Contact to multi Address Book \n8: display Multiple Address book \n9: To Exit");
+					+ " \n6: Add Multiple Address Book \n7: Add Contact to multi Address Book \n8: display Multiple Address book "
+					+ "\n9: find by city\n0: To Exit");
 
 			int ch = sc.nextInt();
 
@@ -46,7 +47,9 @@ public class UC6 {
 	    	case 8:
 				multi.printaddressBook();
 				break;
-			case 9:
+	    	case 9:
+	    		add.findbyCity();
+	    	case 0:
 				sc.close();
 				return;
 			}

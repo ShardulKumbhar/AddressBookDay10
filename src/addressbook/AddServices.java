@@ -13,9 +13,11 @@ public class AddServices {
 	public void numberOfTimes() {
 		System.out.println("Enter the number of contacts to add");
 		int number = s.nextInt();
-		for (int i = 1; i <= number; i++) {
+		for (int i = 1; i <= number;) {
 	  System.out.println("Enter the contact details of person ");
 			duplicateCheck();
+			 i++;
+			
 		}
 	}
 	
@@ -65,6 +67,40 @@ public class AddServices {
 
 		System.out.println(contacts);
 	}
+	
+	public AddContact findbyCity() { // to find the contacts
+		System.out.println("\n Enter the city : ");
+		String name = s.next();
+		int duplicate = 0; // will increment the duplicate if found multiple contacts with same name
+		AddContact temp = null;
+
+		for (AddContact contact : contacts) {
+
+			if (contact.getCity().equals(name)) {
+
+				duplicate++;
+				temp = contact;
+				System.out.println(contact);
+			}
+		}
+		if (duplicate == 1) {
+			return temp;
+
+		} else if (duplicate > 1) {
+			System.out.print(" There are multiple contacts with given name.\n Please enter their state id: ");
+			String state = s.next();
+			for (AddContact contact : contacts) {
+				if (contact.getCity().equals(name) && contact.getState().equals(state)) {
+					return contact;
+				}
+			}
+		} else {
+			System.out.println("No contact with the given cty. Please enter the correct city");
+			findContact();
+		}
+		return temp;
+	}
+
 
 	public AddContact findContact() { // to find the contacts
 		System.out.println("\n Enter the first name of the contact to edit: ");
