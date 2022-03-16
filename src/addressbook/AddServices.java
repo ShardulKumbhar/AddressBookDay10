@@ -4,12 +4,28 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddServices {
+	/**
+	 * steps
+	 * ======================================================
+	 * 1.created one arraylist to store values
+	 * 2.created method to take number of input 
+	 * 3.Checking if there duplicate name already exicts
+	 * *4.taking input for person data
+	 * 5.Method to display
+	 * 6.Method to find and edit contact 
+	 * 7.Metthod to edit person data
+	 * =======================================================
+	 */
+	/*
+	 * 1.created one arraylist to store values
+	 */
 	ArrayList<AddContact> contacts = new ArrayList<AddContact>();
 	Scanner s = new Scanner(System.in);
+    String name;
 
-	
-	String name;
-
+    /*
+     * 2.created method to take number of input 
+     */
 	public void numberOfTimes() {
 		System.out.println("Enter the number of contacts to add");
 		int number = s.nextInt();
@@ -19,6 +35,9 @@ public class AddServices {
 		}
 	}
 	
+	/*
+	 * 3.Checking if there duplicate name already exicts
+	 */
 	public void duplicateCheck() {  
 		System.out.print(" Please enter the first name: ");
 		name = s.next();
@@ -30,6 +49,9 @@ public class AddServices {
 	}
 
 
+	/*
+	 *4.taking input for person data
+	 */
 	public void addPerson() {
 
 		
@@ -61,11 +83,17 @@ public class AddServices {
 
 	}
 
+	/*
+	 * 5.Method to display
+	 */
 	public void display() {
 
 		System.out.println(contacts);
 	}
 
+	/*
+	 * 6.Method to find and edit contact 
+	 */
 	public AddContact findContact() { // to find the contacts
 		System.out.println("\n Enter the first name of the contact to edit: ");
 		String name = s.next();
@@ -99,6 +127,9 @@ public class AddServices {
 		return temp;
 	}
 
+	/*
+	 * 7.Metthod to edit person data
+	 */
 	public void edit() {
 		AddContact contact = findContact();
 		System.out.println(
@@ -158,6 +189,9 @@ public class AddServices {
 		System.out.println("Contacts Updated: " + contact);
 	}
 
+	/*
+	 * Method to delete person contacts
+	 */
 	public void delete() {
 		AddContact contact = findContact();
 		contacts.remove(contact);

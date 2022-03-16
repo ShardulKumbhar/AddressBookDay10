@@ -4,11 +4,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * steps
+ * =============================================================
+ *  1.Method to save in HashMap in key value pair
+ * 2. Method to add multiple address book to adderess book
+ * 3.method to add person contatcts in multiple address book
+ * 4.Method to print multiple address book
+ * ============================================================
+ */
 public class MultipleAddressBook {
 
+	/*
+	 * 1.Method to save in HashMap in key value pair
+	 */
 	Map<String, AddServices> addressBookSystem = new HashMap<>();
 	Scanner sc = new Scanner(System.in);
 
+	/*
+	 *2. Method to add multiple address book to adderess book
+	 */
 	public void AddMultipleAddressBook() {
 		System.out.println("Enter the name of address book :");
 
@@ -25,6 +40,9 @@ public class MultipleAddressBook {
 		}
 	}
 
+	/*
+	 * 3.method to add person contatcts in multiple address book
+	 */
 	public void addingContacts() {
 		System.out.println("Enter name of adress book you want to add contatcts in");
 		String existingBook = sc.next();
@@ -38,6 +56,9 @@ public class MultipleAddressBook {
 
 	}
 
+	/*
+	 * 4.Method to print multiple address book
+	 */
 	public void printaddressBook() {
 		for (String i : addressBookSystem.keySet()) {
 			System.out.println(i);
