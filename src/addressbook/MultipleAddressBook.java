@@ -29,7 +29,6 @@ public class MultipleAddressBook {
 
 		String bookName = sc.next();
 
-		// addressBookSystem.put(bookName, service);
 		if (addressBookSystem.containsKey(bookName)) {
 			System.out.println("Book Already Exists");
 		} else {
@@ -46,15 +45,21 @@ public class MultipleAddressBook {
 	public void addingContacts() {
 		System.out.println("Enter name of adress book you want to add contatcts in");
 		String existingBook = sc.next();
-		// System.out.println(existingBook);
+		
 		addressBookSystem.get(existingBook);
+		try {
 		if (existingBook == null) {
 			System.out.println("Book Not Exist");
 		} else {
 			addressBookSystem.get(existingBook).addPerson();
 		}
+		}catch(NullPointerException e){
+			System.out.println("Book not Exist..try again");
+		}
+			
+		}
 
-	}
+	
 
 	/*
 	 * 4.Method to print multiple address book
@@ -64,7 +69,6 @@ public class MultipleAddressBook {
 			System.out.println(i);
 			System.out.println(addressBookSystem.get(i).contacts);
 		}
-
 	}
 
 }

@@ -10,18 +10,19 @@ public class AddServices {
 	 * 1.created one arraylist to store values
 	 * 2.created method to take number of input 
 	 * 3.Checking if there duplicate name already exicts
-	 * *4.taking input for person data
+	 * 4.taking input for person data
 	 * 5.Method to display
 	 * 6.Method to find and edit contact 
-	 * 7.Metthod to edit person data
+	 * 7.Checking if there duplicate name already exicts
+	 * 8.Metthod to edit person data
 	 * =======================================================
 	 */
 	/*
 	 * 1.created one arraylist to store values
 	 */
+	String name;
 	ArrayList<AddContact> contacts = new ArrayList<AddContact>();
 	Scanner s = new Scanner(System.in);
-    String name;
 
     /*
      * 2.created method to take number of input 
@@ -34,26 +35,11 @@ public class AddServices {
 			duplicateCheck();
 		}
 	}
-	
-	/*
-	 * 3.Checking if there duplicate name already exicts
-	 */
-	public void duplicateCheck() {  
-		System.out.print(" Please enter the first name: ");
-		name = s.next();
-		for(AddContact i : contacts) {
-		   if(i.getFirstName().equals(name)) {
-			   System.out.println(" Given name already exists");
-		   } return;
-        }  addPerson();
-	}
-
 
 	/*
 	 *4.taking input for person data
 	 */
 	public void addPerson() {
-
 		
 		String firstName = name;
 
@@ -188,9 +174,22 @@ public class AddServices {
 		}
 		System.out.println("Contacts Updated: " + contact);
 	}
+	
+	/*
+	 * 7..Checking if there duplicate name already exicts
+	 */
+	public void duplicateCheck() {  
+		System.out.print(" Please enter the first name: ");
+		name = s.next();
+		for(AddContact i : contacts) {
+		   if(i.getFirstName().equals(name)) {
+			   System.out.println(" Given name already exists");
+		   } return;
+        }  addPerson();
+	}
 
 	/*
-	 * Method to delete person contacts
+	 * 8.Method to delete person contacts
 	 */
 	public void delete() {
 		AddContact contact = findContact();
