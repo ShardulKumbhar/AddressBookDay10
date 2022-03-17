@@ -21,7 +21,8 @@ public class Main {
 		while (true) {
 			System.out.println("Enter \n 1. Add  new AddressBook\n 2. Add contact in AddressBook\n "
 					+ "3. edit the contact in AddressBook\n 4. delete the contact in AddressBook\n 5. delete the AddressBook\n "
-					+ "6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 8. Search by City. \n 9. Search by State \n 0. To exit");
+					+ "6. Print the AddressBook\n 7. Print the contacts in AddressBook\n 8. Search by City. \n 9. Search by State "
+					+ "/n10. View Person by City \n 11. View Person by State \n 12. Count People \n 0. To exit");
 			Scanner scanner = new Scanner(System.in);
 			int choice = scanner.nextInt();
 			switch (choice) {
@@ -47,10 +48,24 @@ public class Main {
 				obj.printContactsInBook();
 				break;
 			case 8:
-				obj.searchByCity();;
+				obj.searchByCity();
 				break;
 			case 9:
-				obj.searchByState();;
+				obj.searchByState();
+				break;
+			case 10:
+				obj.displayPeopleByRegion(AddressBookServices.personByCity);
+				break;
+			case 11:
+				obj.displayPeopleByRegion(AddressBookServices.personByState);
+				break;
+			case 12:
+				System.out.println("Enter \n1.Display By City\n2.Display By State");
+				int countChoice = sc.nextInt();
+				if(countChoice==1)
+					obj.countPeopleByRegion(AddressBookServices.personByCity);
+				else 
+					obj.countPeopleByRegion(AddressBookServices.personByState);
 				break;
 			case 0:
 				System.exit(0);

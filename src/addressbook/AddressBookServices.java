@@ -17,6 +17,8 @@ public class AddressBookServices {
 	 */
 	List<AddContact> contacts = new ArrayList<AddContact>();
 	Map<String, AddressBookServices> addressBookMap = new HashMap<>();
+	public static HashMap<String, ArrayList<AddContact>> personByCity  = new HashMap<String, ArrayList<AddContact>>();
+	public static HashMap<String, ArrayList<AddContact>> personByState = new HashMap<String, ArrayList<AddContact>>();
 	AddContact person = new AddContact();
 
 	/*
@@ -220,4 +222,29 @@ public class AddressBookServices {
 		System.out.println("The contact has been deleted from the Address Book");
 	}
 
+	public void addPersonToCity(AddContact contact) {
+		if (personByCity.containsKey(contact.getCity())) {
+			personByCity.get(contact.getCity()).add(contact);
+		}
+		else {
+			ArrayList<AddContact> cityList = new ArrayList<AddContact>();
+			cityList.add(contact);
+			personByCity.put(contact.getCity(), cityList);
+		}
+	}
+
+
+	/*
+	 *  In this method we are checking the person by state
+	 */
+	public void addPersonToState(AddContact contact) {
+		if (personByState.containsKey(contact.getState())) {			
+			personByState.get(contact.getState()).add(contact);
+		}
+		else {
+			ArrayList<AddContact> stateList = new ArrayList<AddContact>();
+			stateList.add(contact);
+			personByState.put(contact.getState(), stateList);
+		}
+	}
 }
