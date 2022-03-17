@@ -1,74 +1,143 @@
 package addressbook;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
-/**
- * steps
- * =============================================================
- *  1.Method to save in HashMap in key value pair
- * 2. Method to add multiple address book to adderess book
- * 3.method to add person contatcts in multiple address book
- * 4.Method to print multiple address book
- * ============================================================
- */
 public class MultipleAddressBook {
-
-	/*
-	 * 1.Method to save in HashMap in key value pair
+	/**
+	 * We have created a HashMap and taken the key String as addressBook name and the value as AddressBookServices for contacts.
 	 */
-	Map<String, AddServices> addressBookSystem = new HashMap<>();
-	Scanner sc = new Scanner(System.in);
+	Map<String, AddressBookServices> addressBookMap = new HashMap<>();
+	List<AddContact> contacts = new ArrayList<AddContact>();
+	Scanner scanner = new Scanner(System.in);
 
-	/*
-	 *2. Method to add multiple address book to adderess book
+	/**
+	 * 1. The method addAddressBook will add the address book key to the Map.
 	 */
-	public void AddMultipleAddressBook() {
-		System.out.println("Enter the name of address book :");
-
-		String bookName = sc.next();
-
-		if (addressBookSystem.containsKey(bookName)) {
-			System.out.println("Book Already Exists");
+	public void addAddressBook() {
+		System.out.println("Enter Name of new Address Book: ");
+		Scanner scanner = new Scanner(System.in);
+		String bookName = scanner.next();
+		if (addressBookMap.containsKey(bookName)) {
+			System.out.println("Address book with this name exists, Enter new name.");
+			addAddressBook();
 		} else {
-			AddServices service = new AddServices();
-			addressBookSystem.put(bookName, service);
-			System.out.println("created new address book");
+			AddressBookServices addressBook = new AddressBookServices();
+			addressBookMap.put(bookName, addressBook); 
+			System.out.println("Address Book " + bookName + " successfully added!!");
+		}
+	}
 
+	/**
+	 * 2. The method addContact will add the contact to the addressBook
+	 */
+	public void addContact() {
+		System.out.println("Enter the name of Address book to add the contact.");
+		Scanner scanner = new Scanner(System.in);
+		String newContact = scanner.nextLine();
+		AddressBookServices addressBook = addressBookMap.get(newContact);
+		if (addressBook == null) {
+			System.out.println("No book found");
+
+		} else {
+			addressBookMap.get(newContact).addContact();
+		}
+	}
+
+	/**
+	 * 3. The method editContact will edit the contacts in the address book
+	 */
+	public void editContactInBook() {
+		System.out.println("Enter Name of Address Book you want to edit: ");
+		Scanner scanner = new Scanner(System.in);
+		String editBookName = scanner.next();
+		if (addressBookMap.containsKey(editBookName)) {
+			addressBookMap.get(editBookName).editContact();
+		} else {
+			System.out.println("AddressBook doesn't exist, Please enter correct name.");
+			editContactInBook();
+		}
+	}
+
+	/**
+	 * 4. - Method to delete the addressBook
+	 */
+	public void deleteAddressBook() {
+		System.out.println("Enter Name of Address Book you want to delete: ");
+		Scanner scanner = new Scanner(System.in);
+		String bookName = scanner.next();
+		if (addressBookMap.containsKey(bookName)) { 
+			addressBookMap.remove(bookName); 
+		} else {
+			System.out.println("AddressBook doesn't exist, Please enter correct name.");
+			deleteAddressBook();
+		}
+	}
+
+	/**
+	 * 5. The method deleteContactInBook to delete the specific contact in the book
+	 */
+	public void deleteContactInBook() {
+		System.out.println("Enter Name of Address Book you want to delete the contacts in it: ");
+		Scanner scanner = new Scanner(System.in);
+		String bookName = scanner.next();
+		if (addressBookMap.containsKey(bookName)) {
+			addressBookMap.get(bookName).deleteContact();
+		} else {
+			System.out.println("AddressBook doesn't exist, Please enter correct name.");
+			deleteContactInBook();
 		}
 	}
 
 	/*
-	 * 3.method to add person contatcts in multiple address book
+	 * 6.- This method will print the AddressBook i.e keys in the Map
 	 */
-	public void addingContacts() {
-		System.out.println("Enter name of adress book you want to add contatcts in");
-		String existingBook = sc.next();
-		
-		addressBookSystem.get(existingBook);
-		try {
-		if (existingBook == null) {
-			System.out.println("Book Not Exist");
-		} else {
-			addressBookSystem.get(existingBook).addPerson();
-		}
-		}catch(NullPointerException e){
-			System.out.println("Book not Exist..try again");
-		}
-			
-		}
-
-	
-
-	/*
-	 * 4.Method to print multiple address book
-	 */
-	public void printaddressBook() {
-		for (String i : addressBookSystem.keySet()) {
+	public void printBook() {
+		System.out.println("These are AddressBooks in program.");
+		for (String i : addressBookMap.keySet()) {
 			System.out.println(i);
-			System.out.println(addressBookSystem.get(i).contacts);
 		}
 	}
 
+	/*
+	 * 2 We have used the get(key) metod to print the contacts.
+	 */
+	public void printContactsInBook() {
+		for (String i : addressBookMap.keySet()) {
+			System.out.println(i);
+			System.out.println(addressBookMap.get(i).contacts);
+		}
+		System.out.println(" ");
+	}
+
+	/*
+	 * 7. In this method we are searching the person by the city
+	 */
+	public void searchByCity() {
+
+		System.out.println("Enter the name of the City to get the persons : ");
+		String cityName = scanner.next();
+		for (String i : addressBookMap.keySet()) {
+			List<AddContact> arr = addressBookMap.get(i).contacts;
+			arr.stream().filter(person -> person.getCity().equals(cityName))
+					.forEach(person -> System.out.println(person.getFirstName()));
+		}
+	}
+
+	/*
+	 * In this method we are searching the person by the state
+	 */
+	public void searchByState() {
+
+		System.out.println("Enter the name of the State to the get persons : ");
+		String stateName = scanner.next();
+		for (String i : addressBookMap.keySet()) {
+			List<AddContact> arr = addressBookMap.get(i).contacts;
+			arr.stream().filter(person -> person.getState().equals(stateName))
+					.forEach(person -> System.out.println(person.getFirstName()));
+		}
+	}
 }
+	
