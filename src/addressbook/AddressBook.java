@@ -1,6 +1,5 @@
 package addressbook;
 
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -156,6 +155,15 @@ public class AddressBook {
 	public void sortByName() {
 		List<ContactDetails> list = contactDetailsList.stream().collect(Collectors.toList());
 		list.stream().sorted((g1, g2) -> ((String) g1.getFirstName()).compareTo(g2.getFirstName()))
+				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
+	}
+
+	/**
+	 * Declaring Sort Method Sorting The Details Of Contact By City
+	 */
+	public void sortByCity() {
+		List<ContactDetails> list = contactDetailsList.stream().collect(Collectors.toList());
+		list.stream().sorted((g1, g2) -> ((String) g1.getCity()).compareTo(g2.getCity()))
 				.forEach(contact -> System.out.println(contact.getFirstName() + " " + contact.getLastName()));
 	}
 
