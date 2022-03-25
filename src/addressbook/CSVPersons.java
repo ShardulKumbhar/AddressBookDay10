@@ -46,9 +46,15 @@ public class CSVPersons {
 			 * 4.creating a loop to pop out every string values
 			 */
 			while (sc.hasNext()) {
-				System.out.println("User data  :" + sc.next().toString());
-			}
+				String line = sc.next().toString();
+				//System.out.println("User data  :" + line);
+				
+				String[] userData = line.split(",");
+				User user = new User(userData[0],userData[1],userData[2],userData[3],userData[4],userData[5],userData[6],userData[7]);
+				System.out.println("User json: "+ new Gson().toJson(user));
+				
 			sc.close();
+			}
 		} catch (FileNotFoundException e) {
 
 			e.printStackTrace();
@@ -103,6 +109,8 @@ public class CSVPersons {
 			System.out.println("Enter the emailID :");
 			String h = sc.nextLine();
 
+			
+		
 			printWriter.print(a);
 			printWriter.print(",");
 			printWriter.print(b);
@@ -114,6 +122,7 @@ public class CSVPersons {
 			printWriter.print(e);
 			printWriter.print(",");
 			printWriter.print(f);
+			printWriter.print(",");
 			printWriter.print(g);
 			printWriter.print(",");
 			printWriter.print(h);
